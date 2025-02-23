@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "helix-jupyter-thing"
+dynamic = ["version"]
+description = 'A thing to help the Helix text editor connect to a Jupyter kernel.'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ["helix", "jupyter"]
+authors = [
+  { name = "asungy", email = "62207329+asungy@users.noreply.github.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "click",
+  "jupyter_client",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "python-lsp-server",
+  "jupyter",
+]
+
+[project.scripts]
+hjt = "helix_jupyter_thing.entrypoint:main"
+
+[project.urls]
+Documentation = "https://github.com/asungy/helix-jupyter-thing#readme"
+Issues = "https://github.com/asungy/helix-jupyter-thing/issues"
+Source = "https://github.com/asungy/helix-jupyter-thing"
+
+[tool.hatch.version]
+path = "src/helix_jupyter_thing/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/helix_jupyter_thing tests}"
+
+[tool.coverage.run]
+source_pkgs = ["helix_jupyter_thing", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/helix_jupyter_thing/__about__.py",
+]
+
+[tool.coverage.paths]
+helix_jupyter_thing = ["src/helix_jupyter_thing", "*/helix-jupyter-thing/src/helix_jupyter_thing"]
+tests = ["tests", "*/helix-jupyter-thing/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
