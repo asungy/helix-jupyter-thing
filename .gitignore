@@ -1,4 +1,12 @@
-/venv
+# Jupyter notebook files.
 *.ipynb
 .ipynb_checkpoints/
+
+# Python cache.
 __pycache__/
+
+# Build artifacts.
+dist/
+
+# Virtual environment.
+venv/

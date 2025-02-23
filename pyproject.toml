@@ -35,6 +35,10 @@ dev = [
   "python-lsp-server",
   "jupyter",
 ]
+deploy = [
+  "twine",
+  "build",
+]
 
 [project.scripts]
 hjt = "helix_jupyter_thing.entrypoint:main"
