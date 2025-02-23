@@ -3,6 +3,8 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/helix-jupyter-thing.svg)](https://pypi.org/project/helix-jupyter-thing)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/helix-jupyter-thing.svg)](https://pypi.org/project/helix-jupyter-thing)
 
+A thing to help the Helix text editor connect to a Jupyter kernel.
+
 -----
 
 ## Table of Contents
