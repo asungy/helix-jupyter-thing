@@ -60,8 +60,10 @@ def send_from_stdin(id_pattern=""):
 
         msg = client.get_iopub_msg(timeout=1)
         if msg:
-            if msg["header"]["msg_type"] == "stream":  # Output from kernel
+            if msg["header"]["msg_type"] == "stream": # Output from kernel
                 print(msg["content"]["text"])
+            elif msg["header"]["msg_type"] == "error": # Output errors
+                print(msg["content"]["traceback"])
             elif (
                 msg["header"]["msg_type"] == "status"
                 and msg["content"]["execution_state"] == "idle"
